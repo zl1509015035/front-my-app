@@ -1,20 +1,34 @@
 <template>
   <div>
-  <h1>我是Main</h1>
+    <el-container>
+      <el-aside width="200px">
+        <common-aside></common-aside>
+      </el-aside>
 
-    <router-view></router-view>
+      <el-container>
+        <el-header>Header</el-header>
+
+        <el-main>
+          <!--          路由出口-->
+          <!--          路由匹配到的组件将渲染在这里-->
+          <router-view></router-view>
+        </el-main>
+      </el-container>
+    </el-container>
   </div>
-
 
 
 </template>
 
 <script>
-export default {
-  data(){
-    return {
+import CommonAside from "@/components/CommonAside.vue";
 
-    }
+export default {
+  data() {
+    return {}
+  },
+  components:{
+    CommonAside
   }
 }
 
