@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+
+import Main from '../views/Main.vue'
 import Home from '../views/Home.vue'
 import User from "@/views/User.vue";
 
@@ -11,9 +13,15 @@ Vue.use(VueRouter)
 //3.创建router实例
 
 const routes = [
-    {path: '/home', component: Home},
-    {path: '/user', component: User},
-
+    {
+        path: '/',
+        component: Main,
+        children: [
+            //子旅游
+            {path: 'home', component: Home},
+            {path: 'user', component: User},
+        ]
+    }
 ]
 
 const router = new VueRouter({
