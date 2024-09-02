@@ -11,13 +11,14 @@
   >
     <h3>通用后台管理系统</h3>
     <el-menu-item
+        @click="clickMenu(item)"
         v-for="item in noChildren"
         :key="item.name"
         :index="item.name">
 
-<!--      字符串拼接使用-->
-        <i :class="`el-icon-${item.icon}`"></i>
-        <span slot="title">{{item.label}}</span>
+      <!--      字符串拼接使用-->
+      <i :class="`el-icon-${item.icon}`"></i>
+      <span slot="title">{{ item.label }}</span>
     </el-menu-item>
 
 
@@ -27,13 +28,13 @@
         :index="item.label">
       <template slot="title">
         <i :class="`el-icon-${item.icon}`"></i>
-        <span slot="title">{{item.label}}</span>
+        <span slot="title">{{ item.label }}</span>
       </template>
       <el-menu-item-group
           v-for="subItem in item.children"
           :key="subItem.path"
       >
-        <el-menu-item :index="subItem.path">{{ subItem.label }}</el-menu-item>
+        <el-menu-item @click="clickMenu(subItem)" :index="subItem.path">{{ subItem.label }}</el-menu-item>
       </el-menu-item-group>
     </el-submenu>
 
@@ -48,9 +49,10 @@
   min-height: 400px;
 }
 
-.el-menu{
+.el-menu {
   height: 100vh;
-  h3{
+
+  h3 {
     color: #fff;
     text-align: center;
     line-height: 48px;
@@ -119,6 +121,16 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    //点击菜单
+    clickMenu(item) {
+      console.log(item)
+      //当页面的路由与跳转的路由不一致时，才允许跳转
+      if (this.$route.path !== item.path
+          && !(this.$route.path === '/home'
+              && (item.path === '/'))) {
+        this.$router.push(item.path)
+      }
     }
   },
   computed: {
