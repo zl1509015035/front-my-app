@@ -21,6 +21,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 
+hetm,body{
+  margin:0;
+  padding:0;
+}
 </style>
