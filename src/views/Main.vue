@@ -30,10 +30,16 @@ export default {
   data() {
     return {}
   },
-  components:{
+  components: {
     CommonAside,
     CommonHeader
   }
 }
 
 </script>
+
+<style scoped>
+.el-header {
+  padding: 0
+}
+</style>
