@@ -23,7 +23,7 @@ export default {
 
 <style lang="less">
 
-hetm,body{
+hetm,body,h3,p{
   margin:0;
   padding:0;
 }
